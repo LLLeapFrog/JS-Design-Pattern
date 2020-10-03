@@ -1,6 +1,6 @@
 title: JS Design Datterns
 email: tche4409@gmail.com
-baseurl: '' # the subpath of your site, e.g. /blog
+baseurl: 'JS-Design-Pattern' # the subpath of your site, e.g. /blog
 url: '' # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: jekyllrb
 github_username: jekyll
@@ -9,4 +9,4 @@ github_username: jekyll
 theme: minima
 plugins:
   - jekyll-feed
-remote_theme: just-the-docs
+theme: just-the-docs
