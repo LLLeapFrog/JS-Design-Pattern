@@ -9,4 +9,4 @@ github_username: jekyll
 theme: minima
 plugins:
   - jekyll-feed
-theme: pmarsceill/just-the-docs
+remote_theme: pmarsceill/just-the-docs
