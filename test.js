@@ -1,25 +1,11 @@
-const Queue = function() {
-  this.arr = [];
-  this.push = push;
-  this.pop = pop;
+const Polygon = function() {
+  this.name = 'Polygon';
 };
 
-const King = class {
-  constructor() {
-    this.value = 'king';
-  }
-  getKing() {
-    console.log(this.value);
-  }
-};
+const poly1 = new Polygon();
 
-function push(node) {
-  console.log('push');
-}
+const poly2 = Object.create(Polygon.prototype);
 
-function pop() {}
-
-const q = new Queue();
-const k = new King();
-console.log(q instanceof Queue);
-console.log(k instanceof King);
+console.log(poly1._proto__ === poly2._proto__); // true
+console.log(poly1.name); // 'Polygon'
+console.log(poly2.name); // undefined
