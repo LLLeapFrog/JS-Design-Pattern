@@ -79,3 +79,26 @@ Person.prototype.getAge = function() {
 ```
 
 ## Prototype Chain
+
+The following codes simulate a prototype chain.
+
+```js
+const Animal = function() {};
+Animal.prototype = { age: 0 };
+
+const Cat = function() {};
+Cat.prototype = new Animal();
+
+const cat = new Cat();
+console.log(cat.age); // 0
+console.log(cat.name); // undefined
+```
+
+What did the engine do?
+
+1. The engine didn't find the property of `age` in obejct `cat`.
+2. The request was passed to the `prototype` of constructor function `Cat`.
+3. There still wasn't `age`.
+4. The request was passed to the `prototype` of constructor function `Animal`.
+5. The engine found `age` and return the value.
+6. **If the engine tried to find `name` property, the request would be further passed to `Object.prototype` which was `null`. That is the end of prototype chain and return `undefined`.**
