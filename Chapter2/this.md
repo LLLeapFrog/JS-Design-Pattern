@@ -11,6 +11,8 @@ parent: this, call and apply
 
 The references of `this` can be classified into four contexts
 
+#### Catalogue
+
 1. [As an object method](#as-an-object-method)
 2. [As an ordinary function](#as-an-ordinary-function)
 3. [As a constructor](#as-a-constructor)
@@ -72,7 +74,9 @@ object.getName(); // global
 
 Even though you call an object method, the ordinary inner function is called refering `this` to the `window`.
 
-A simple solution here. Declare a variable saving the reference of `this`.
+### Solutions
+
+- A simple solution here. Declare a variable saving the reference of `this`.
 
 ```js
 window.name = 'global';
@@ -91,7 +95,23 @@ const object = {
 object.getName(); // Tom
 ```
 
-The another solution is using `Function.prototype.bind()`.
+- The another solution is using `Function.prototype.bind()`.
+
+```js
+const object = {
+  name: 'Tom',
+  getName: function() {
+    const innerFn = function() {
+      console.log(this.name);
+    }.bind(object); // <----------
+    innerFn();
+  }
+};
+
+object.getName(); // Tom
+```
+
+- Or you can use `Function.prototype.apply()` and `Function.prototype.call()`
 
 ```js
 const object = {
@@ -100,15 +120,14 @@ const object = {
     const innerFn = function() {
       console.log(this.name);
     };
-    const innerFn2 = innerFn.bind(object); // <----------
-    innerFn2(); // <----------
+    innerFn.apply(object); // <----------
   }
 };
 
 object.getName(); // Tom
 ```
 
-Or you can use arrow function
+- Finally, use arrow function
 
 ```js
 window.name = 'global';
@@ -126,7 +145,9 @@ const object = {
 object.getName(); // Tom
 ```
 
-Arrow functions do not default `this` to the `window`, rather they execute in the scope they created
+Arrow functions do not default `this` to the `window`, rather they execute in the scope they created.
+
+**BTW: Never declare methods using arrow function! `this` within the arrow function refers to `window` in this case :)**
 
 ### In strict mode
 
@@ -194,6 +215,6 @@ const dog = {
   name: 'dog'
 };
 
-console.log(cat.getName());
-console.log(cat.getName.call(dog));
+console.log(cat.getName()); // cat
+console.log(cat.getName.call(dog)); // dog
 ```

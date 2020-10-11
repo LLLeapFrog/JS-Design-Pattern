@@ -2,7 +2,7 @@
 layout: default
 title: Prototypes and Inheritance
 nav_order: 3
-parent: Basic Knowledge
+parent: OOP of Javascript
 ---
 
 # Prototypes and Inheritance

@@ -2,7 +2,7 @@
 layout: default
 title: Polymorphism
 nav_order: 1
-parent: Basic Knowledge
+parent: OOP of Javascript
 ---
 
 # Polymorphism

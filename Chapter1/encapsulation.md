@@ -2,7 +2,7 @@
 layout: default
 title: Encapsulation
 nav_order: 2
-parent: Basic Knowledge
+parent: OOP of Javascript
 ---
 
 # Encapsulation
@@ -12,7 +12,7 @@ Encapsulation is not only used to hide data, also the details of the implementat
 In Javascript, we use scope to realise encapsulation, and only `public` and `private` can be simulated.
 
 ```js
-var myObject = (function() {
+const myObject = (function() {
   let __name = 'Thomas';
   return {
     getName: function() {
